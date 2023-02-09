@@ -1,0 +1,73 @@
+{extend name='main'}
+
+{block name="button"}
+<!--{if isset($type) and $type eq 'index' and auth("queue")}-->
+<button data-confirm="确定要同步授权微信吗？" data-queue="{:url('queue')}" class='layui-btn layui-btn-sm layui-btn-primary'>同步授权微信</button>
+<!--{/if}-->
+{/block}
+
+{block name="content"}
+
+<div class="layui-tab layui-tab-card think-bg-white">
+    <ul class="layui-tab-title">
+        {foreach ['index'=>'微信管理','recycle'=>'回 收 站'] as $k=>$v}
+        {if isset($type) and $type eq $k}
+        <li data-open="{:url('index')}?type={$k}" class="layui-this">{$v}</li>
+        {else}
+        <li data-open="{:url('index')}?type={$k}">{$v}</li>
+        {/if}{/foreach}
+    </ul>
+    <div class="layui-tab-content think-box-shadow">
+        {include file='wechat/index_search'}
+        <table class="layui-table margin-top-10" lay-skin="line">
+            {notempty name='list'}
+            <thead>
+            <tr>
+                <th class='text-left nowrap' style="width:30%">接口信息</th>
+                <th class='text-left nowrap' style="width:25%">微信信息</th>
+                <th></th>
+            </tr>
+            </thead>
+            {/notempty}
+            <tbody>
+            {foreach $list as $key=>$vo}
+            <tr>
+                <td class='text-left nowrap'>
+                    <div class="headimg headimg-md headimg-no" data-lazy-src="{$vo.user_headimg|default=''}" data-tips-image></div>
+                    <div class="inline-block text-middle sub-span-blue">
+                        <div>公众号APPID：{$vo.authorizer_appid}，已请求 <span>{$vo.total}</span> 次</div>
+                        <div>接口授权密钥：{$vo.appkey|default='<span class="color-desc">未生成接口服务密码, 请稍候授权绑定</span>'|raw}</div>
+                        <div>消息推送地址：{$vo.appuri|default='<i class="color-desc">未配置消息推送地址</i>'|raw}</div>
+                    </div>
+                </td>
+                <td class='text-left nowrap'>
+                    <img class="headimg headimg-md headimg-no" referrerpolicy="no-referrer" data-tips-image src="{$vo.qrcode_url}">
+                    <div class="inline-block text-middle">
+                        <div>{$vo.user_nickname|default='<span class="color-desc">未获取到微信昵称</span>'|raw}<span class="margin-left-5 color-desc"> ( {$vo.user_company|default=''} )</span></div>
+                        <div>于 <span class="color-blue">{$vo.auth_time|format_datetime}</span> 授权</div>
+                        <div><b>{$vo.service_type|default='-'}</b> / <b>{$vo.service_verify == '未认证' ? '<span class="color-red">未认证</span>' : '<span class="color-green">已认证</span>'}</b> / <b>{if $vo.status eq 0}<span class="color-red">已禁用</span>{elseif $vo.status eq 1}<span class="color-green">使用中</span>{/if}</b></div>
+                    </div>
+                </td>
+                <td class='text-left nowrap'>
+                    <div class="padding-bottom-10 color-desc">账号：{$vo.user_name|default='--'}</div>
+                    <!--{if auth("state") and $vo.status eq 1}-->
+                    <a data-confirm="确定要禁用该微信吗？" class="layui-btn layui-btn-xs layui-btn-warm" data-action="{:url('state')}" data-value="id#{$vo.id};status#0" data-csrf="{:systoken('state')}">禁 用</a>
+                    <!--{/if}-->
+                    <!--{if auth("state") and $vo.status eq 0}-->
+                    <a data-confirm="确定要恢复该微信吗？" class="layui-btn layui-btn-xs layui-btn-warm" data-action="{:url('state')}" data-value="id#{$vo.id};status#1" data-csrf="{:systoken('state')}">恢 复</a>
+                    <!--{/if}-->
+                    <!--{if auth("sync")}-->
+                    <a class="layui-btn layui-btn-xs" data-action="{:url('sync')}" data-value="appid#{$vo.authorizer_appid}">同 步</a>
+                    <!--{/if}-->
+                    <!--{if auth("clear")}-->
+                    <a class="layui-btn layui-btn-xs layui-btn-normal" data-confirm="每个微信每个月有10次清零机会，请谨慎使用！" data-action='{:url("clear")}' data-value="appid#{$vo.authorizer_appid}" data-csrf="{:systoken('clear')}">清 零</a>
+                    <!--{/if}-->
+                </td>
+            </tr>
+            {/foreach}
+            </tbody>
+        </table>
+        {empty name='list'}<span class="notdata">没有记录哦</span>{else}{$pagehtml|raw|default=''}{/empty}
+    </div>
+</div>
+{/block}

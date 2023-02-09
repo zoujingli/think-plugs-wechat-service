@@ -1,0 +1,39 @@
+{
+  "type": "think-admin-plugin",
+  "name": "zoujingli/think-plugs-wechat-service",
+  "homepage": "https://thinkadmin.top",
+  "description": "Wechat Service Plugin for ThinkAdmin",
+  "authors": [
+    {
+      "name": "Anyon",
+      "email": "zoujingli@qq.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.1",
+    "ext-json": "*",
+    "ext-openssl": "*",
+    "ext-mbstring": "*",
+    "zoujingli/qrcode": "^1.0",
+    "zoujingli/think-library": "^6.0||v6.0.x-dev",
+    "zoujingli/weopen-developer": "^1.0||dev-master",
+    "zoujingli/think-plugs-admin": "^1.0||dev-master"
+  },
+  "autoload": {
+    "psr-4": {
+      "plugin\\wechat\\service": "src"
+    }
+  },
+  "extra": {
+    "think": {
+      "services": [
+        "plugin\\wechat\\service\\Service"
+      ]
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "zoujingli/think-install": true
+    }
+  }
+}
