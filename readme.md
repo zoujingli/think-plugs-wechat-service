@@ -13,7 +13,7 @@ composer require zoujingli/think-plugs-wechat-service dev-master
 ### 卸载插件
 
 ```shell
-# 注意，插件卸载不需要删除数据表，需要手动删除
+# 注意，插件卸载不会删除数据表，需要手动删除
 composer remove zoujingli/think-plugs-wechat-service
 ```
 
