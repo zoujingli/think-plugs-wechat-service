@@ -1,6 +1,7 @@
 {
   "type": "think-admin-plugin",
   "name": "zoujingli/think-plugs-wechat-service",
+  "license": "GPL",
   "homepage": "https://thinkadmin.top",
   "description": "Wechat Service Plugin for ThinkAdmin",
   "authors": [
@@ -14,7 +15,6 @@
     "ext-json": "*",
     "ext-openssl": "*",
     "ext-mbstring": "*",
-    "zoujingli/qrcode": "^1.0",
     "zoujingli/think-library": "^6.0||v6.0.x-dev",
     "zoujingli/weopen-developer": "^1.0||dev-master",
     "zoujingli/think-plugs-admin": "^1.0||dev-master"
