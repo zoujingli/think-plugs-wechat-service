@@ -1,6 +1,6 @@
 # ThinkPlugsWechatService
 
-[微信开放平台](https://open.weixin.qq.com)基础插件。
+[微信开放平台](https://open.weixin.qq.com)基础插件，此为`ThinkAdmin`会员插件。
 
 安装后可以基于此插件进行扩展开发微信开放平台相关的功能，基础服务对接及`SDK`都已经包含！
 
