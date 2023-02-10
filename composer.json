@@ -21,7 +21,7 @@
   },
   "autoload": {
     "psr-4": {
-      "plugin\\wechat\\service": "src"
+      "plugin\\wechat\\service\\": "src"
     }
   },
   "extra": {

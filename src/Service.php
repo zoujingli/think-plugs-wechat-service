@@ -30,6 +30,15 @@ class Service extends Plugin
 
     public static function menu(): array
     {
-        return [];
+        $code = app(static::class)->appName;
+        return [
+            [
+                'name' => '平台配置',
+                'subs' => [
+                    ['name' => '开放平台配置', 'icon' => 'layui-icon layui-icon-set', 'node' => "{$code}/config/index"],
+                    ['name' => '授权微信管理', 'icon' => "layui-icon layui-icon-dialogue", 'node' => "{$code}/wechat/index"],
+                ]
+            ]
+        ];
     }
 }
