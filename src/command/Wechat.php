@@ -16,8 +16,8 @@
 
 namespace plugin\wechat\service\command;
 
+use plugin\wechat\service\AuthService;
 use plugin\wechat\service\model\WechatAuth;
-use plugin\wechat\service\service\WechatService;
 use think\admin\Command;
 use think\console\Input;
 use think\console\Output;
@@ -30,8 +30,8 @@ class Wechat extends Command
 {
     protected function configure()
     {
-        $this->setName('xadmin:wechat');
-        $this->setDescription('同步所有微信的授权');
+        $this->setName('xsync:wechat');
+        $this->setDescription('同步所有已授权的公众号信息');
     }
 
     /**
@@ -45,15 +45,14 @@ class Wechat extends Command
      */
     protected function execute(Input $input, Output $output)
     {
-        $offset = 0;
-        $wechat = WechatService::WeOpenService();
+        [$offset, $wechat] = [0, AuthService::WeOpenService()];
         do {
             $data = $wechat->getAuthorizerList(500, $offset);
             foreach ($data['list'] ?? [] as $item) {
                 $this->queue->message($data['total_count'] ?? 0, ++$offset, "公众号 {$item['authorizer_appid']} 开始同步数据");
                 $config = WechatAuth::mk()->where(['authorizer_appid' => $item['authorizer_appid']])->find();
                 if (isset($item['refresh_token']) && isset($item['auth_time'])) {
-                    $info = array_merge(WechatService::buildAuthData($wechat->getAuthorizerInfo($item['authorizer_appid'])), [
+                    $info = array_merge(AuthService::buildAuthData($wechat->getAuthorizerInfo($item['authorizer_appid'])), [
                         'authorizer_appid' => $item['authorizer_appid'], 'authorizer_refresh_token' => $item['refresh_token'], 'auth_time' => $item['auth_time'], 'deleted' => 0,
                     ]);
                     if (empty($config) || empty($config['appkey'])) {

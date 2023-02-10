@@ -17,6 +17,17 @@ composer require zoujingli/think-plugs-wechat-service dev-master
 composer remove zoujingli/think-plugs-wechat-service
 ```
 
+### 调用案例
+
+```php
+// 开放平台功能调用入口
+use plugin\wechat\service\AuthService;
+
+// 指定已授权公众号APPID，获取其粉丝列表
+$userList = AuthService::WeChatUser(APPID)->getUserList();
+var_dump($userList);
+```
+
 ### 功能节点
 
 可根据下面节点配置菜单或访问权限

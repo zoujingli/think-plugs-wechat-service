@@ -16,8 +16,8 @@
 
 namespace plugin\wechat\service\controller;
 
+use plugin\wechat\service\AuthService;
 use plugin\wechat\service\model\WechatAuth;
-use plugin\wechat\service\service\WechatService;
 use think\admin\Controller;
 use think\admin\helper\QueryHelper;
 use think\exception\HttpResponseException;
@@ -70,8 +70,8 @@ class Wechat extends Controller
             $where = ['authorizer_appid' => $appid, 'deleted' => 0];
             $author = WechatAuth::mk()->where($where)->findOrEmpty()->toArray();
             if (empty($author)) $this->error('无效的授权公众号，请重新绑定授权！');
-            $info = WechatService::WeOpenService()->getAuthorizerInfo($appid);
-            $data = WechatService::buildAuthData(array_merge($info, ['authorizer_appid' => $appid]));
+            $info = AuthService::WeOpenService()->getAuthorizerInfo($appid);
+            $data = AuthService::buildAuthData(array_merge($info, ['authorizer_appid' => $appid]));
             $where = ['authorizer_appid' => $data['authorizer_appid']];
             $appkey = WechatAuth::mk()->where($where)->value('appkey');
             if (empty($appkey)) $data['appkey'] = md5(uniqid('', true));
@@ -102,7 +102,7 @@ class Wechat extends Controller
     {
         try {
             $appid = $this->request->post('appid');
-            $result = WechatService::WeChatLimit($appid)->clearQuota();
+            $result = AuthService::WeChatLimit($appid)->clearQuota();
             if (empty($result['errcode']) && $result['errmsg'] === 'ok') {
                 $this->success('接口调用次数清零成功！');
             } elseif (isset($result['errmsg'])) {

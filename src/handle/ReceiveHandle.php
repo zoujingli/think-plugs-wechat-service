@@ -16,15 +16,15 @@
 
 namespace plugin\wechat\service\handle;
 
+use plugin\wechat\service\AuthService;
 use plugin\wechat\service\model\WechatAuth;
-use plugin\wechat\service\service\WechatService;
 use think\admin\extend\HttpExtend;
 use think\admin\Service;
 
 /**
  * 授权公众号消息转发处理
  * Class ReceiveHandle
- * @package plugin\wechat\service\serivce
+ * @package plugin\wechat\service
  */
 class ReceiveHandle extends Service
 {
@@ -39,7 +39,7 @@ class ReceiveHandle extends Service
     public function handler(string $appid): string
     {
         try {
-            $wechat = WechatService::WeChatReceive($appid);
+            $wechat = AuthService::WeChatReceive($appid);
         } catch (\Exception $exception) {
             $message = "Wechat {$appid} message handling failed, {$exception->getMessage()}";
             $this->app->log->notice($message);

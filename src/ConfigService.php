@@ -14,7 +14,7 @@
 // | github 代码仓库：https://github.com/zoujingli/think-plugs-wechat-service
 // +----------------------------------------------------------------------
 
-namespace plugin\wechat\service\service;
+namespace plugin\wechat\service;
 
 use plugin\wechat\service\model\WechatAuth;
 use think\admin\Exception;
@@ -24,7 +24,7 @@ use think\admin\Service;
 /**
  * 公众号授权配置
  * Class ConfigService
- * @package plugin\wechat\service\service
+ * @package plugin\wechat\service
  */
 class ConfigService extends Service
 {
@@ -102,7 +102,7 @@ class ConfigService extends Service
      */
     public function config(?string $name = null)
     {
-        return WechatService::WeChatScript($this->appid)->config->get($name);
+        return AuthService::WeChatScript($this->appid)->config->get($name);
     }
 
     /**
@@ -122,7 +122,7 @@ class ConfigService extends Service
         $mode = empty($type) ? 'snsapi_base' : 'snsapi_userinfo';
         $params = ['mode' => $type, 'sessid' => $sessid, 'enurl' => enbase64url($source)];
         $location = url('@service/api.push/oauth', [], false, true)->build() . '?' . http_build_query($params);
-        $oauthurl = WechatService::WeOpenService()->getOauthRedirect($this->appid, $location, $mode);
+        $oauthurl = AuthService::WeOpenService()->getOauthRedirect($this->appid, $location, $mode);
         return ['openid' => $openid, 'fans' => $fans, 'url' => $oauthurl];
     }
 
@@ -135,6 +135,6 @@ class ConfigService extends Service
      */
     public function jsSign(string $url): array
     {
-        return WechatService::WeChatScript($this->appid)->getJsSign($url);
+        return AuthService::WeChatScript($this->appid)->getJsSign($url);
     }
 }

@@ -14,14 +14,14 @@
 // | github 代码仓库：https://github.com/zoujingli/think-plugs-wechat-service
 // +----------------------------------------------------------------------
 
-namespace plugin\wechat\service\service;
+namespace plugin\wechat\service;
 
 use plugin\wechat\service\model\WechatAuth;
 use think\admin\Service;
 
 /**
- * Class WechatService
- * @package plugin\wechat\service\serivce
+ * Class AuthService
+ * @package plugin\wechat\service
  *
  * @method \WeChat\Card WeChatCard($appid) static 微信卡券管理
  * @method \WeChat\Custom WeChatCustom($appid) static 微信客服消息
@@ -79,7 +79,7 @@ use think\admin\Service;
  * ----- ThinkService -----
  * @method ConfigService ThinkServiceConfig($appid) static 平台服务配置
  */
-class WechatService extends Service
+class AuthService extends Service
 {
 
     /**
@@ -182,7 +182,7 @@ class WechatService extends Service
             $refreshToken = WechatAuth::mk()->where($map)->value('authorizer_refresh_token');
             if (empty($refreshToken)) throw new \think\admin\Exception('The WeChat information is not configured.', '404');
             // 刷新公众号原授权 AccessToken
-            $result = WechatService::WeOpenService()->refreshAccessToken($authorizerAppid, $refreshToken);
+            $result = AuthService::WeOpenService()->refreshAccessToken($authorizerAppid, $refreshToken);
             if (empty($result['authorizer_access_token']) || empty($result['authorizer_refresh_token'])) {
                 throw new \think\Exception($result['errmsg']);
             }

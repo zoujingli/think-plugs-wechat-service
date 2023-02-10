@@ -16,10 +16,10 @@
 
 namespace plugin\wechat\service\controller\api;
 
+use plugin\wechat\service\AuthService;
 use plugin\wechat\service\handle\PublishHandle;
 use plugin\wechat\service\handle\ReceiveHandle;
 use plugin\wechat\service\model\WechatAuth;
-use plugin\wechat\service\service\WechatService;
 use think\admin\Controller;
 use think\Response;
 use WeOpen\Service;
@@ -67,7 +67,7 @@ class Push extends Controller
     public function ticket(): string
     {
         try {
-            $server = WechatService::WeOpenService();
+            $server = AuthService::WeOpenService();
             if (!($data = $server->getComonentTicket())) {
                 return "Ticket event handling failed.";
             }
@@ -111,11 +111,11 @@ class Push extends Controller
             $this->request->get('mode'), $this->request->get('state'),
             $this->request->get('enurl'), $this->request->get('sessid'),
         ];
-        $result = WechatService::WeOpenService()->getOauthAccessToken($appid);
+        $result = AuthService::WeOpenService()->getOauthAccessToken($appid);
         if (empty($result['openid'])) throw new \think\admin\Exception('网页授权失败, 无法进一步操作！');
         $this->app->cache->set("{$appid}_{$sessid}_openid", $result['openid'], 3600);
         if (!empty($mode)) {
-            $fans = WechatService::WeChatOauth($appid)->getUserInfo($result['access_token'], $result['openid']);
+            $fans = AuthService::WeChatOauth($appid)->getUserInfo($result['access_token'], $result['openid']);
             if (empty($fans)) throw new \think\admin\Exception('网页授权信息获取失败, 无法进一步操作！');
             $this->app->cache->set("{$appid}_{$sessid}_fans", $fans, 3600);
         }
@@ -143,7 +143,7 @@ class Push extends Controller
         }
 
         # 预授权码不为空，则表示可以进行授权处理
-        $service = WechatService::WeOpenService();
+        $service = AuthService::WeOpenService();
         if (($authcode = $this->request->get('auth_code'))) {
             return $this->applyAuth($service, $resource, $authcode);
         }
@@ -185,7 +185,7 @@ class Push extends Controller
         }
 
         // 生成公众号授权参数
-        $data = array_merge(WechatService::buildAuthData($data), [
+        $data = array_merge(AuthService::buildAuthData($data), [
             'deleted' => 0, 'expires_in' => time() + 7000, 'create_at' => date('y-m-d H:i:s'),
         ]);
 

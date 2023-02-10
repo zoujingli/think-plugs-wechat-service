@@ -16,8 +16,8 @@
 
 namespace plugin\wechat\service\controller\api;
 
+use plugin\wechat\service\AuthService;
 use plugin\wechat\service\model\WechatAuth;
-use plugin\wechat\service\service\WechatService;
 use think\admin\Controller;
 use think\admin\extend\JsonRpcServer;
 use think\Exception;
@@ -89,7 +89,7 @@ class Client extends Controller
             if (abs(time() - $data['time']) > 3600) throw new Exception('请求时间与服务器时差过大，请同步时间！');
             if (md5("{$class}#{$appid}#{$config['appkey']}#{$time}#{$nostr}") !== $sign) throw new Exception("该公众号{$appid}请求签名异常！");
             $config->inc('total')->update([]);
-            return WechatService::__callStatic($class, [$appid]);
+            return AuthService::__callStatic($class, [$appid]);
         } catch (\Exception $exception) {
             return new \Exception($exception->getMessage(), 404);
         }

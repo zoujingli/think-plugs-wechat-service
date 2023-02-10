@@ -19,7 +19,7 @@ namespace plugin\wechat\service;
 use plugin\wechat\service\command\Wechat;
 use think\admin\Plugin;
 
-class Service extends Plugin
+class RegisterService extends Plugin
 {
     protected $package = 'zoujingli/think-plugs-wechat-service';
 

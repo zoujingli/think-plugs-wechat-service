@@ -16,13 +16,13 @@
 
 namespace plugin\wechat\service\handle;
 
-use plugin\wechat\service\service\WechatService;
+use plugin\wechat\service\AuthService;
 use think\admin\Service;
 
 /**
  * 授权公众上线测试处理
  * Class PublishHandle
- * @package plugin\wechat\service\serivce
+ * @package plugin\wechat\service
  */
 class PublishHandle extends Service
 {
@@ -37,7 +37,7 @@ class PublishHandle extends Service
     public function handler(string $appid): string
     {
         try {
-            $wechat = WechatService::WeChatReceive($appid);
+            $wechat = AuthService::WeChatReceive($appid);
         } catch (\Exception $exception) {
             $message = "Wechat {$appid} message handling failed, {$exception->getMessage()}";
             $this->app->log->notice($message);
@@ -50,8 +50,8 @@ class PublishHandle extends Service
                     return $wechat->text('TESTCOMPONENT_MSG_TYPE_TEXT_callback')->reply([], true);
                 } else {
                     [, $code] = explode(':', $receive['content'], 2);
-                    WechatService::WeOpenService()->getQueryAuthorizerInfo($code);
-                    WechatService::WeChatCustom($appid)->send([
+                    AuthService::WeOpenService()->getQueryAuthorizerInfo($code);
+                    AuthService::WeChatCustom($appid)->send([
                         'touser' => $wechat->getOpenid(), 'msgtype' => 'text', 'text' => [
                             'content' => "{$code}_from_api",
                         ],

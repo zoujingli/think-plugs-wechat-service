@@ -27,7 +27,7 @@
   "extra": {
     "think": {
       "services": [
-        "plugin\\wechat\\service\\Service"
+        "plugin\\wechat\\service\\RegisterService"
       ]
     }
   },
