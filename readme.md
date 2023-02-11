@@ -1,4 +1,4 @@
-# ThinkPlugsWechatService[`VIP`](https://thinkadmin.top/vip-introduce)
+# ThinkPlugsWechatService [`VIP`](https://thinkadmin.top/vip-introduce)
 
 [![Latest Stable Version](https://poser.pugx.org/zoujingli/think-plugs-wechat-service/v/stable)](https://packagist.org/packages/zoujingli/think-plugs-wechat-service)
 [![Latest Unstable Version](https://poser.pugx.org/zoujingli/think-plugs-wechat-service/v/unstable)](https://packagist.org/packages/zoujingli/think-plugs-wechat-service)
