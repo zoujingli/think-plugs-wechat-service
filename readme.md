@@ -24,7 +24,7 @@
 ### 安装插件
 
 ```shell
-# 注意，仅支持在 ThinkAdmin v6 系统中使用
+# 注意，插件仅支持在 ThinkAdmin v6 系统中使用
 composer require zoujingli/think-plugs-wechat-service dev-master
 ```
 
