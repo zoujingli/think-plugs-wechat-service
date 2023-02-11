@@ -38,7 +38,7 @@ composer remove zoujingli/think-plugs-wechat-service
 ### 调用案例
 
 ```php
-// 开放平台功能调用入口
+// 开放平台SDK调用入口
 use plugin\wechat\service\AuthService;
 
 // 指定已授权公众号APPID，获取其粉丝列表
@@ -48,21 +48,21 @@ var_dump($userList);
 
 ### 功能节点
 
-可根据下面节点配置菜单或访问权限
+可根据下面的功能节点配置菜单和访问权限，按钮操作级别的节点未展示！
 
 * 开放平台配置：`plugin-wechat-service/config/index`
 * 授权微信管理：`plugin-wechat-service/wechat/index`
 
-### 插件数据库
+### 插件数据
 
 本插件涉及数据表有：
 
 * 微信-授权 `wechat_auth`
 
-### 版本说明
+### 版权说明
 
-**ThinkPlugsWechatService** 为`ThinkAdmin`会员插件，未获取授权不得商用，了解商用授权请转到 [《会员尊享介绍》](https://thinkadmin.top/vip-introduce)。
+**ThinkPlugsWechatService** 为`ThinkAdmin`会员插件，未获取授权不得商用，了解商用授权请阅读 [《会员尊享介绍》](https://thinkadmin.top/vip-introduce)。
 
-### 插件效果展示
+### 插件展示
 
-<img alt="WechatServiceDemo" src="https://thinkadmin.top/static/img/wechat-service-01.jpg" style="max-width:100%">
+<img alt="WechatServiceDemo" src=""https://thinkadmin.top/static/img/wechat-service-01.jpg" style="max-width:100%">
