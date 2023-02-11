@@ -13,6 +13,8 @@
 
 **安全提示：** 安装此插件需要是`ThinkAdmin v6.1`或直接自动升级到此版本，会强制替换`app/admin`目录和`public/static`部分目录。
 
+如果不希望自有的`app/admin`目录被更新替换，可以在`app/admin`目录下创建`ignore`文件（ 即`app/admin/ignore`，注意文件没有后缀哦！），即使执行了插件安装或更新都会忽略更新替换。
+
 ### 开放接口
 
 此插件支持`think-plugs-wechat`远程调用，需要在安装有`think-plugs-wechat`的系统增加配置`sysconf('wechat.service_jsonrpc')`接口地址；
