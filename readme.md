@@ -61,9 +61,9 @@ var_dump($userList);
 
 ### 版权说明
 
-**ThinkPlugsWechatService** 为`ThinkAdmin`会员插件。
+**ThinkPlugsWechatService** 为 [`ThinkAdmin`](https://thinkadmin.top) 会员插件。
 
-未经授权不得商用，了解商用授权请阅读 [《会员尊享介绍》](https://thinkadmin.top/vip-introduce)。
+未经授权不得商用，了解商用授权请阅读[《会员尊享介绍》](https://thinkadmin.top/vip-introduce)。
 
 ### 插件展示
 
