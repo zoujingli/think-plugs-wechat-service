@@ -65,4 +65,4 @@ var_dump($userList);
 
 ### 插件展示
 
-<img alt="WechatServiceDemo" src=""https://thinkadmin.top/static/img/wechat-service-01.jpg" style="max-width:100%">
+<img alt="WechatServiceDemo" src="https://thinkadmin.top/static/img/wechat-service-01.jpg" style="max-width:100%">
