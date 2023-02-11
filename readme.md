@@ -1,17 +1,30 @@
-# ThinkPlugsWechatService
+# ThinkPlugsWechatService[`VIP`](https://thinkadmin.top/vip-introduce)
 
 [![Latest Stable Version](https://poser.pugx.org/zoujingli/think-plugs-wechat-service/v/stable)](https://packagist.org/packages/zoujingli/think-plugs-wechat-service)
 [![Latest Unstable Version](https://poser.pugx.org/zoujingli/think-plugs-wechat-service/v/unstable)](https://packagist.org/packages/zoujingli/think-plugs-wechat-service)
 [![Total Downloads](https://poser.pugx.org/zoujingli/think-plugs-wechat-service/downloads)](https://packagist.org/packages/zoujingli/think-plugs-wechat-service)
 [![Monthly Downloads](http://img.shields.io/packagist/dm/zoujingli/think-plugs-wechat-service.svg)](https://packagist.org/packages/zoujingli/think-plugs-wechat-service)
 
-[微信开放平台](https://open.weixin.qq.com)基础插件，此为`ThinkAdmin`会员插件。
+微信开放平台基础插件，此插件为[会员尊享插件](https://thinkadmin.top/vip-introduce)，未授权不得商用。
 
-安装后可以基于此插件进行扩展开发微信开放平台相关的功能，基础服务对接及`SDK`都已经包含！
+基于此插件可以进行[微信开放平台](https://open.weixin.qq.com)的功能开发，基础服务对接及`SDK`都已经包含在内！
+
+以后`ThinkAdmin`关于微信开放平台的基础功能都会集中在此插件中实现，目前已集成**`公众号`**有**`小程序`**管理等相关接口；
+
+**安全提示：**安装此插件需要是`ThinkAdmin v6.1`或直接自动升级到此版本，会强制替换`app/admin`目录和`public/static`部分目录。
+
+### 开放接口
+
+此插件支持`think-plugs-wechat`远程调用，需要在安装有`think-plugs-wechat`的系统增加配置`sysconf('wechat.service_jsonrpc')`接口地址；
+
+开放的`JSON-RPC`接口地址可以在此插件的节点`plugin-wechat-service/config/index`页面查看，注意此插件接口地址需要带有`TOKEN`占位字符；
+
+接口地址格式如：`http://admin.local.cuci.cc/plugin-wechat-service/api.client/jsonrpc?token=TOKEN`
 
 ### 安装插件
 
 ```shell
+# 注意，仅支持在 ThinkAdmin v6 系统中使用
 composer require zoujingli/think-plugs-wechat-service dev-master
 ```
 
@@ -43,4 +56,13 @@ var_dump($userList);
 ### 插件数据库
 
 本插件涉及数据表有：
-`wechat_auth`
+
+* 微信-授权 `wechat_auth`
+
+### 版本说明
+
+**ThinkPlugsWechatService** 为`ThinkAdmin`会员插件，未获取授权不得商用，了解商用授权请转到 [《会员尊享介绍》](https://thinkadmin.top/vip-introduce)。
+
+### 插件效果展示
+
+<img alt="WechatServiceDemo" src="https://thinkadmin.top/static/img/wechat-service-01.jpg" style="max-width:100%">
