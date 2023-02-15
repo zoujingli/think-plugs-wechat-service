@@ -13,7 +13,7 @@
 
 **安全提示：** 安装此插件需要是`ThinkAdmin v6.1`或直接自动升级到此版本，会强制替换`app/admin`目录和`public/static`部分目录。
 
-如果不希望自有的`app/admin`目录被更新替换，可以在`app/admin`目录下创建`ignore`文件（ 即`app/admin/ignore`，注意文件名没有后缀哦！），即使执行了插件安装或更新都会忽略更新替换。
+如果不希望自有的`app/admin`目录被更新替换，可以在`app/admin`目录下创建`ignore`文件（ 如 `app/admin/ignore`，注意文件名没有后缀哦！），即使执行了插件安装或更新都会忽略更新替换。
 
 ### 开放接口
 
@@ -26,14 +26,14 @@
 ### 安装插件
 
 ```shell
-# 注意，插件仅支持在 ThinkAdmin v6 系统中使用
+### 注意，插件仅支持在 ThinkAdmin v6 中使用
 composer require zoujingli/think-plugs-wechat-service dev-master
 ```
 
 ### 卸载插件
 
 ```shell
-# 注意，插件卸载不会删除数据表，需要手动删除
+### 注意，插件卸载不会删除数据表，需要手动删除
 composer remove zoujingli/think-plugs-wechat-service
 ```
 
@@ -63,7 +63,7 @@ var_dump($userList);
 
 ### 版权说明
 
-**ThinkPlugsWechatService** 为 [`ThinkAdmin`](https://thinkadmin.top) 会员插件。
+**ThinkPlugsWechatService** 为 [**ThinkAdmin**](https://thinkadmin.top) 会员插件。
 
 未经授权不得商用，了解商用授权请阅读[《会员尊享介绍》](https://thinkadmin.top/vip-introduce)。
 
