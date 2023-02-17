@@ -7,17 +7,17 @@
 
 微信开放平台基础插件，此插件为[会员尊享插件](https://thinkadmin.top/vip-introduce)，未授权不可商用。
 
-基于此插件可以进行[微信开放平台](https://open.weixin.qq.com)的功能开发，基础服务对接及`SDK`都已经包含在内！
+基于此插件可以进行[微信开放平台](https://open.weixin.qq.com)的功能开发，基础服务对接及接口调度都已经包含在内！
 
-以后`ThinkAdmin`关于微信开放平台的基础功能都会集中在此插件中实现，目前已集成 **`公众号`** 有 **`小程序`** 管理等相关接口；
+以后 **ThinkAdmin** 关于微信开放平台的基础功能都会集中在此插件中实现，目前已集成 **公众号** 和 **小程序** 等相关接口；
 
-**安全提示：** 安装此插件需要是`ThinkAdmin v6.1`或直接自动升级到此版本，会强制替换`app/admin`目录和`public/static`部分目录。
+**安全提示：** 安装此插件需要是 **ThinkAdmin v6.1** 或直接自动升级到此版本，会强制替换 `app/admin` 目录和 `public/static` 部分目录。
 
-如果不希望自有的`app/admin`目录被更新替换，可以在`app/admin`目录下创建`ignore`文件（ 如 `app/admin/ignore`，注意文件名没有后缀哦！），即使执行了插件安装或更新都会忽略更新替换。
+如果不希望 `app/admin` 目录被更新替换，可以在 `app/admin` 目录下创建 `ignore` 文件（ 如 `app/admin/ignore`，注意文件名没有后缀哦！），即使执行了插件安装或更新都会忽略更新替换。
 
 ### 开放接口
 
-此插件支持`think-plugs-wechat`远程调用，需要在安装有`think-plugs-wechat`的系统增加配置`sysconf('wechat.service_jsonrpc')`接口地址；
+此插件支持`ThinkPlugsWechat`应用插件远程调用，需要在安装有`ThinkPlugsWechat`的系统增加配置`sysconf('wechat.service_jsonrpc')`接口地址；
 
 开放的`JSON-RPC`接口地址可以在此插件的节点`plugin-wechat-service/config/index`页面查看，注意此插件接口地址需要带有`TOKEN`占位字符；
 
