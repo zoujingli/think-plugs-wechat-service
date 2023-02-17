@@ -79,6 +79,7 @@ class Client extends Controller
     {
         try {
             $data = json_decode(debase64url(input('token', '')), true);
+            if (empty($data) || !is_array($data)) throw new Exception("请求 TOKEN 格式错误！");
             [$class, $appid, $time, $nostr, $sign] = [$data['class'], $data['appid'], $data['time'], $data['nostr'], $data['sign']];
             if (empty($class) || empty($appid) || empty($time) || empty($nostr) || empty($sign)) throw new Exception('请求 TOKEN 格式异常！');
             // 接口请求参数检查验证
