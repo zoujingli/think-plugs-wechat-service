@@ -5,7 +5,7 @@
 [![Total Downloads](https://poser.pugx.org/zoujingli/think-plugs-wechat-service/downloads)](https://packagist.org/packages/zoujingli/think-plugs-wechat-service)
 [![Monthly Downloads](http://img.shields.io/packagist/dm/zoujingli/think-plugs-wechat-service.svg)](https://packagist.org/packages/zoujingli/think-plugs-wechat-service)
 
-微信开放平台基础插件，此插件为[会员尊享插件](https://thinkadmin.top/vip-introduce)，未授权不得商用。
+微信开放平台基础插件，此插件为[会员尊享插件](https://thinkadmin.top/vip-introduce)，未授权不可商用。
 
 基于此插件可以进行[微信开放平台](https://open.weixin.qq.com)的功能开发，基础服务对接及`SDK`都已经包含在内！
 
@@ -65,7 +65,7 @@ var_dump($userList);
 
 **ThinkPlugsWechatService** 为 [**ThinkAdmin**](https://thinkadmin.top) 会员插件。
 
-未经授权不得商用，了解商用授权请阅读[《会员尊享介绍》](https://thinkadmin.top/vip-introduce)。
+未授权不可商用，了解商用授权请阅读[《会员尊享介绍》](https://thinkadmin.top/vip-introduce)。
 
 ### 插件展示
 
