@@ -5,7 +5,6 @@
 [![Total Downloads](https://poser.pugx.org/zoujingli/think-plugs-wechat-service/downloads)](https://packagist.org/packages/zoujingli/think-plugs-wechat-service)
 [![Monthly Downloads](https://poser.pugx.org/zoujingli/think-plugs-wechat-service/d/monthly)](https://packagist.org/packages/zoujingli/think-plugs-wechat-service)
 [![Daily Downloads](https://poser.pugx.org/zoujingli/think-plugs-wechat-service/d/daily)](https://packagist.org/packages/zoujingli/think-plugs-wechat-service)
-[![License](https://poser.pugx.org/zoujingli/think-plugs-wechat-service/license)](https://packagist.org/packages/zoujingli/think-plugs-wechat-service)
 
 微信开放平台基础插件，此插件为[会员尊享插件](https://thinkadmin.top/vip-introduce)，未授权不可商用。
 
