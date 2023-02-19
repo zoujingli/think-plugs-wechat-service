@@ -39,6 +39,7 @@ class Wechat extends Command
      * @param Output $output
      * @throws \WeChat\Exceptions\InvalidResponseException
      * @throws \WeChat\Exceptions\LocalCacheException
+     * @throws \think\admin\Exception
      * @throws \think\db\exception\DataNotFoundException
      * @throws \think\db\exception\DbException
      * @throws \think\db\exception\ModelNotFoundException
@@ -48,6 +49,9 @@ class Wechat extends Command
         [$offset, $wechat] = [0, AuthService::WeOpenService()];
         do {
             $data = $wechat->getAuthorizerList(500, $offset);
+            if (!isset($data['total_count'])) {
+                $this->queue->error($data['errmsg'] ?? '接口调用异常！');
+            }
             foreach ($data['list'] ?? [] as $item) {
                 $this->queue->message($data['total_count'] ?? 0, ++$offset, "公众号 {$item['authorizer_appid']} 开始同步数据");
                 $config = WechatAuth::mk()->where(['authorizer_appid' => $item['authorizer_appid']])->find();
