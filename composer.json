@@ -28,6 +28,11 @@
       "services": [
         "plugin\\wechat\\service\\RegisterService"
       ]
+    },
+    "plugin": {
+      "copy": {
+        "stc/database": "database/migrations"
+      }
     }
   },
   "config": {
