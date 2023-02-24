@@ -1,11 +1,11 @@
 # ThinkPlugsWechatService for ThinkAdmin [`VIP`](https://thinkadmin.top/vip-introduce)
 
-[![PHP Version](https://img.shields.io/badge/php-%3E%3D7.1-8892BF.svg)](http://www.php.net)
 [![Latest Stable Version](https://poser.pugx.org/zoujingli/think-plugs-wechat-service/v/stable)](https://packagist.org/packages/zoujingli/think-plugs-wechat-service)
 [![Latest Unstable Version](https://poser.pugx.org/zoujingli/think-plugs-wechat-service/v/unstable)](https://packagist.org/packages/zoujingli/think-plugs-wechat-service)
 [![Total Downloads](https://poser.pugx.org/zoujingli/think-plugs-wechat-service/downloads)](https://packagist.org/packages/zoujingli/think-plugs-wechat-service)
-[![Monthly Downloads](https://poser.pugx.org/zoujingli/think-plugs-wechat-service/d/monthly)](https://packagist.org/packages/zoujingli/think-plugs-wechat-service)
+[![Monthly Downloads](http://img.shields.io/packagist/dm/zoujingli/think-plugs-wechat-service.svg)](https://packagist.org/packages/zoujingli/think-plugs-wechat-service)
 [![Daily Downloads](https://poser.pugx.org/zoujingli/think-plugs-wechat-service/d/daily)](https://packagist.org/packages/zoujingli/think-plugs-wechat-service)
+[![ThinkAdmin VIP 授权](https://img.shields.io/badge/ThinkAdmin-VIP%20授权-blueviolet.svg)](https://thinkadmin.top/vip-introduce)
 
 微信开放平台基础插件，此插件为[会员尊享插件](https://thinkadmin.top/vip-introduce)，未授权不可商用。
 
