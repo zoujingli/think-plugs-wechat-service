@@ -30,6 +30,10 @@
         "plugin\\wechat\\service\\RegisterService"
       ]
     },
+    "config": {
+      "name": "微信开放平台基础服务",
+      "cover": "https://static.cdn.cuci.cc/bd/2a2f272511ee7216cdec6cf3843a38.png"
+    },
     "plugin": {
       "copy": {
         "stc/database": "database/migrations"
