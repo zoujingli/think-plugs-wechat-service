@@ -36,8 +36,11 @@ composer require zoujingli/think-plugs-wechat-service
 ### 卸载插件
 
 ```shell
-### 注意，插件卸载不会删除数据表，需要手动删除
-composer remove zoujingli/think-plugs-wechat-service
+### 安装前建议尝试更新所有组件
+composer update --optimize-autoloader
+
+### 注意，插件仅支持在 ThinkAdmin v6.1 中使用
+composer remove zoujingli/think-plugs-wechat-service --optimize-autoloader
 ```
 
 ### 调用案例
