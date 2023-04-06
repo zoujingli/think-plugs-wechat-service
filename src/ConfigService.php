@@ -121,7 +121,7 @@ class ConfigService extends Service
         }
         $mode = empty($type) ? 'snsapi_base' : 'snsapi_userinfo';
         $params = ['mode' => $type, 'sessid' => $sessid, 'enurl' => enbase64url($source)];
-        $location = url('@service/api.push/oauth', [], false, true)->build() . '?' . http_build_query($params);
+        $location = url('api.push/oauth', [], false, true)->build() . '?' . http_build_query($params);
         $oauthurl = AuthService::WeOpenService()->getOauthRedirect($this->appid, $location, $mode);
         return ['openid' => $openid, 'fans' => $fans, 'url' => $oauthurl];
     }
