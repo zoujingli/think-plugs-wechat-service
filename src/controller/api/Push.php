@@ -149,7 +149,7 @@ class Push extends Controller
         }
 
         # 生成微信授权链接，使用刷新跳转到授权网页
-        $redirect = sysuri("service/api.push/auth", [], false, true) . "?source={$source}";
+        $redirect = sysuri('api.push/auth', [], false, true) . "?source={$source}";
         if (($redirect = $service->getAuthRedirect($redirect))) {
             # 生成微信授权链接成功
             return response("<script>location.href='{$redirect}'</script>", 200, ["Refresh:0;url={$redirect}"]);
