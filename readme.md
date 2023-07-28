@@ -14,13 +14,9 @@
 
 以后 **ThinkAdmin** 关于微信开放平台的基础功能都会集中在此插件中实现，目前已集成 **公众号** 和 **小程序** 管理等相关接口；
 
-**安全提示：** 安装此插件需要是 **ThinkAdmin v6.1** 版本的系统，其他版本会自动升级到 **v6.1** 版本，安装过程会强制替换 `app/admin` 目录和 `public/static` 部分目录。
-
-如果不希望 `app/admin` 目录被更新替换，可以在 `app/admin` 目录下创建 `ignore` 文件（ 如 `app/admin/ignore`，文件名没有后缀哦！），即使执行了应用插件更新也会忽略更新目录。
-
 ### 开放接口
 
-此插件支持 [**ThinkPlugsWechat**](https://thinkadmin.top/think-plugs-wechat) 应用插件远程调用，需要增加配置`sysconf('wechat.service_jsonrpc')`远程调用的 **JSON-RPC** 接口地址；
+此插件支持 [**ThinkPlugsWechat**](https://thinkadmin.top/plugin/think-plugs-wechat.html) 应用插件远程调用，需要增加配置`sysconf('wechat.service_jsonrpc')`远程调用的 **JSON-RPC** 接口地址；
 
 接口地址可以在此插件的节点 `plugin-wechat-service/config/index` 页面查看，注意此插件接口地址需要带有 `TOKEN` 占位字符；
 
