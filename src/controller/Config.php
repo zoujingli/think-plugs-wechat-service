@@ -44,9 +44,7 @@ class Config extends Controller
     /**
      * 修改开放平台参数
      * @auth true
-     * @throws \think\db\exception\DataNotFoundException
-     * @throws \think\db\exception\DbException
-     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\admin\Exception
      */
     public function edit()
     {

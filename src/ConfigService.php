@@ -115,15 +115,16 @@ class ConfigService extends Service
     public function oauth(string $sessid, string $source, int $type = 0): array
     {
         $fans = $this->app->cache->get("{$this->appid}_{$sessid}_fans", []);
+        $token = $this->app->cache->get("{$this->appid}_{$sessid}_token", []);
         $openid = $this->app->cache->get("{$this->appid}_{$sessid}_openid", '');
         if (!empty($openid) && !empty($type) && !empty($fans)) {
-            return ['openid' => $openid, 'fans' => $fans, 'url' => ''];
+            return ['openid' => $openid, 'token' => $token, 'fans' => $fans, 'url' => ''];
         }
         $mode = empty($type) ? 'snsapi_base' : 'snsapi_userinfo';
         $params = ['mode' => $type, 'sessid' => $sessid, 'enurl' => enbase64url($source)];
         $location = url('api.push/oauth', [], false, true)->build() . '?' . http_build_query($params);
         $oauthurl = AuthService::WeOpenService()->getOauthRedirect($this->appid, $location, $mode);
-        return ['openid' => $openid, 'fans' => $fans, 'url' => $oauthurl];
+        return ['openid' => $openid, 'token' => $token, 'fans' => $fans, 'url' => $oauthurl];
     }
 
     /**

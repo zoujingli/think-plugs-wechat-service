@@ -113,11 +113,14 @@ class Push extends Controller
         ];
         $result = AuthService::WeOpenService()->getOauthAccessToken($appid);
         if (empty($result['openid'])) throw new \think\admin\Exception('网页授权失败, 无法进一步操作！');
-        $this->app->cache->set("{$appid}_{$sessid}_openid", $result['openid'], 3600);
+        $expire = empty($result['is_snapshotuser']) ? 3600 : 10;
+        $this->app->cache->set("{$appid}_{$sessid}_token", $result, $expire);
+        $this->app->cache->set("{$appid}_{$sessid}_openid", $result['openid'], $expire);
         if (!empty($mode)) {
             $fans = AuthService::WeChatOauth($appid)->getUserInfo($result['access_token'], $result['openid']);
             if (empty($fans)) throw new \think\admin\Exception('网页授权信息获取失败, 无法进一步操作！');
-            $this->app->cache->set("{$appid}_{$sessid}_fans", $fans, 3600);
+            $fans['is_snapshotuser'] = empty($result['is_snapshotuser']) ? 0 : 1;
+            $this->app->cache->set("{$appid}_{$sessid}_fans", $fans, $expire);
         }
         $this->redirect(debase64url($enurl));
     }
