@@ -2,14 +2,13 @@
   "type": "think-admin-plugin",
   "name": "zoujingli/think-plugs-wechat-service",
   "homepage": "https://thinkadmin.top",
-  "description": "Wechat Service Plugin for ThinkAdmin",
+  "description": "WeChat Service Plugin for ThinkAdmin",
   "authors": [
     {
       "name": "Anyon",
       "email": "zoujingli@qq.com"
     }
   ],
-  "minimum-stability": "dev",
   "require": {
     "php": ">=7.1",
     "ext-json": "*",
