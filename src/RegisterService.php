@@ -19,8 +19,18 @@ namespace plugin\wechat\service;
 use plugin\wechat\service\command\Wechat;
 use think\admin\Plugin;
 
+/**
+ * 应用插件注册服务
+ * @class RegisterService
+ * @package plugin\wechat\service
+ */
 class RegisterService extends Plugin
 {
+
+    protected $appName = '微信开放平台';
+
+    protected $appCode = 'plugin-wechat-service';
+
     protected $package = 'zoujingli/think-plugs-wechat-service';
 
     public function register(): void
@@ -30,7 +40,7 @@ class RegisterService extends Plugin
 
     public static function menu(): array
     {
-        $code = app(static::class)->appName;
+        $code = self::getAppCode();
         return [
             [
                 'name' => '平台配置',
