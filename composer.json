@@ -30,6 +30,7 @@
       ]
     },
     "config": {
+      "type": "module",
       "name": "微信开放平台基础服务",
       "icon": "https://static.cdn.cuci.cc/bd/2a2f272511ee7216cdec6cf3843a38.png",
       "cover": "https://static.cdn.cuci.cc/bd/2a2f272511ee7216cdec6cf3843a38.png",
