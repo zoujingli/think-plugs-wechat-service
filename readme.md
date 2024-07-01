@@ -1,4 +1,4 @@
-# ThinkPlugsWechatService for ThinkAdmin [`VIP`](https://thinkadmin.top/vip-introduce)
+# ThinkPlugsWechatService for ThinkAdmin
 
 [![Latest Stable Version](https://poser.pugx.org/zoujingli/think-plugs-wechat-service/v/stable)](https://packagist.org/packages/zoujingli/think-plugs-wechat-service)
 [![Latest Unstable Version](https://poser.pugx.org/zoujingli/think-plugs-wechat-service/v/unstable)](https://packagist.org/packages/zoujingli/think-plugs-wechat-service)
@@ -8,11 +8,9 @@
 [![PHP Version Require](http://poser.pugx.org/zoujingli/think-plugs-wechat-service/require/php)](https://packagist.org/packages/zoujingli/think-plugs-wechat-service)
 [![ThinkAdmin VIP 授权](https://img.shields.io/badge/license-VIP%20授权-blueviolet.svg)](https://thinkadmin.top/vip-introduce)
 
-微信开放平台基础插件，此插件为[会员尊享插件](https://thinkadmin.top/vip-introduce)，未授权不可商用。
+微信开放平台管理插件是一款专为会员尊享的插件，非授权用户不得将其用于商业目的。此插件旨在简化[微信开放平台](https://open.weixin.qq.com)的功能开发流程，让您无需再为服务对接和接口调度而烦恼，所有复杂性都已为您妥善处理。
 
-基于此插件可以进行[微信开放平台](https://open.weixin.qq.com)的功能开发，服务对接及接口调度都已经包含在内！
-
-以后 **ThinkAdmin** 关于微信开放平台的基础功能都会集中在此插件中实现，目前已集成 **公众号** 和 **小程序** 管理等相关接口；
+今后，**ThinkAdmin** 将把微信开放平台的基础功能统一集中在此插件中，实现功能的集中管理和深度优化。目前，该插件已全面集成 **公众号** 和 **小程序** 管理等核心接口，为您的微信开发工作提供强大的后盾。无论您是希望高效开发公众号、小程序等应用，还是执行其他微信开放平台的操作，此插件都将是您不可或缺的好帮手。
 
 ### 开放接口
 
@@ -77,8 +75,8 @@ var_dump($userInfo);
 
 ### 版权说明
 
-**ThinkPlugsWechatService** 为 **ThinkAdmin** 会员插件，未授权不可商用，了解商用授权请阅读 [《会员尊享介绍》](https://thinkadmin.top/vip-introduce)。
+**ThinkPlugsWechatService** 为 **ThinkAdmin** 会员插件。
 
-### 插件展示
+未获得此插件授权时仅供参考学习不可商用，了解商用授权请阅读 [《会员授权》](https://thinkadmin.top/vip-introduce)。
 
-<img alt="WechatServiceDemo" src="https://thinkadmin.top/static/img/wechat-service-01.jpg" style="max-width:100%">
+版权所有 Copyright © 2014-2024 by ThinkAdmin (https://thinkadmin.top) All rights reserved。

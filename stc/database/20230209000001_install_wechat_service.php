@@ -37,7 +37,6 @@ class InstallWechatService extends Migrator
      */
     private function _create_wechat_auth()
     {
-
         // 当前数据表
         $table = 'wechat_auth';
 
@@ -71,13 +70,12 @@ class InstallWechatService extends Migrator
             ->addColumn('deleted', 'integer', ['limit' => 1, 'default' => 0, 'null' => true, 'comment' => '删除状态(0未删除,1已删除)'])
             ->addColumn('auth_time', 'integer', ['limit' => 20, 'default' => 0, 'null' => true, 'comment' => '授权时间'])
             ->addColumn('create_at', 'timestamp', ['default' => 'CURRENT_TIMESTAMP', 'null' => true, 'comment' => '创建时间'])
-            ->addIndex('authorizer_appid', ['name' => 'idx_wechat_auth_authorizer_appid'])
-            ->addIndex('status', ['name' => 'idx_wechat_auth_status'])
-            ->addIndex('deleted', ['name' => 'idx_wechat_auth_deleted'])
-            ->save();
+            ->addIndex('status', ['name' => 'ia87695d1d_status'])
+            ->addIndex('deleted', ['name' => 'ia87695d1d_deleted'])
+            ->addIndex('authorizer_appid', ['name' => 'ia87695d1d_authorizer_appid'])
+            ->create();
 
         // 修改主键长度
-        $this->table($table)->changeColumn('id', 'integer', ['limit' => 20, 'identity' => true]);
+        $this->table($table)->changeColumn('id', 'integer', ['limit' => 11, 'identity' => true]);
     }
-
 }

@@ -89,7 +89,7 @@ class Client extends Controller
             if (!empty($config['deleted'])) throw new Exception('该公众号已取消授权，请重新授权！');
             if (abs(time() - $data['time']) > 3600) throw new Exception('请求时间与服务器时差过大，请同步时间！');
             if (md5("{$class}#{$appid}#{$config['appkey']}#{$time}#{$nostr}") !== $sign) throw new Exception("该公众号{$appid}请求签名异常！");
-            $config->inc('total')->update([]);
+            $config->inc('total')->save();
             return AuthService::__callStatic($class, [$appid]);
         } catch (\Exception $exception) {
             return new \Exception($exception->getMessage(), 404);

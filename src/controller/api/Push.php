@@ -21,6 +21,7 @@ use plugin\wechat\service\handle\PublishHandle;
 use plugin\wechat\service\handle\ReceiveHandle;
 use plugin\wechat\service\model\WechatAuth;
 use think\admin\Controller;
+use think\admin\Exception;
 use think\Response;
 use WeOpen\Service;
 
@@ -112,13 +113,13 @@ class Push extends Controller
             $this->request->get('enurl'), $this->request->get('sessid'),
         ];
         $result = AuthService::WeOpenService()->getOauthAccessToken($appid);
-        if (empty($result['openid'])) throw new \think\admin\Exception('网页授权失败, 无法进一步操作！');
+        if (empty($result['openid'])) throw new Exception('网页授权失败, 无法进一步操作！');
         $expire = empty($result['is_snapshotuser']) ? 3600 : 10;
         $this->app->cache->set("{$appid}_{$sessid}_token", $result, $expire);
         $this->app->cache->set("{$appid}_{$sessid}_openid", $result['openid'], $expire);
         if (!empty($mode)) {
             $fans = AuthService::WeChatOauth($appid)->getUserInfo($result['access_token'], $result['openid']);
-            if (empty($fans)) throw new \think\admin\Exception('网页授权信息获取失败, 无法进一步操作！');
+            if (empty($fans)) throw new Exception('网页授权信息获取失败, 无法进一步操作！');
             $fans['is_snapshotuser'] = empty($result['is_snapshotuser']) ? 0 : 1;
             $this->app->cache->set("{$appid}_{$sessid}_fans", $fans, $expire);
         }
@@ -136,21 +137,17 @@ class Push extends Controller
      */
     public function auth(): Response
     {
-        $source = input('source');
-        if (empty($source)) {
+        if (empty($source = input('source'))) {
             return response('请传入回跳 source 参数 ( 请使用 enbase64url 加密 )');
         }
-        $resource = debase64url($source);
-        if (empty($resource)) {
+        if (empty($resource = debase64url($source))) {
             return response('请传入回跳 source 参数 ( 请使用 enbase64url 加密 )');
         }
-
         # 预授权码不为空，则表示可以进行授权处理
         $service = AuthService::WeOpenService();
         if (($authcode = $this->request->get('auth_code'))) {
             return $this->applyAuth($service, $resource, $authcode);
         }
-
         # 生成微信授权链接，使用刷新跳转到授权网页
         $redirect = sysuri('api.push/auth', [], false, true) . "?source={$source}";
         if (($redirect = $service->getAuthRedirect($redirect))) {

@@ -31,10 +31,12 @@
     },
     "config": {
       "type": "module",
-      "name": "微信开放平台基础服务",
-      "icon": "https://static.cdn.cuci.cc/bd/2a2f272511ee7216cdec6cf3843a38.png",
-      "cover": "https://static.cdn.cuci.cc/bd/2a2f272511ee7216cdec6cf3843a38.png",
-      "description": "微信开放平台基础支持服务，包含接口对接及相关SDK调度。",
+      "name": "微信开放平台",
+      "description": "微信开放平台管理模块，提供平台配置以及微信授权管理。",
+      "document": "https://thinkadmin.top/plugin/think-plugs-wechat-service.html",
+      "license": [
+        "VIP"
+      ],
       "platforms": [
         "wxapp",
         "wechat"
