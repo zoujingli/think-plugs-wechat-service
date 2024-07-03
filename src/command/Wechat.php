@@ -14,6 +14,8 @@
 // | github 代码仓库：https://github.com/zoujingli/think-plugs-wechat-service
 // +----------------------------------------------------------------------
 
+declare (strict_types=1);
+
 namespace plugin\wechat\service\command;
 
 use plugin\wechat\service\AuthService;
@@ -23,6 +25,7 @@ use think\console\Input;
 use think\console\Output;
 
 /**
+ * 同步公众号授权记录
  * Class WeChat
  * @package plugin\wechat\service\command
  */

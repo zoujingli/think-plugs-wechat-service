@@ -14,6 +14,8 @@
 // | github 代码仓库：https://github.com/zoujingli/think-plugs-wechat-service
 // +----------------------------------------------------------------------
 
+declare (strict_types=1);
+
 namespace plugin\wechat\service\controller\api;
 
 use plugin\wechat\service\AuthService;
@@ -83,13 +85,13 @@ class Client extends Controller
             [$class, $appid, $time, $nostr, $sign] = [$data['class'], $data['appid'], $data['time'], $data['nostr'], $data['sign']];
             if (empty($class) || empty($appid) || empty($time) || empty($nostr) || empty($sign)) throw new Exception('请求 TOKEN 格式异常！');
             // 接口请求参数检查验证
-            $config = WechatAuth::mk()->where(['authorizer_appid' => $appid])->find();
-            if (empty($config)) throw new Exception("该公众号还未授权，请重新授权！");
+            $config = WechatAuth::mk()->where(['authorizer_appid' => $appid])->findOrEmpty();
+            if ($config->isEmpty()) throw new Exception("该公众号还未授权，请重新授权！");
             if (empty($config['status'])) throw new Exception('该公众号已被禁用，请联系管理员！');
             if (!empty($config['deleted'])) throw new Exception('该公众号已取消授权，请重新授权！');
             if (abs(time() - $data['time']) > 3600) throw new Exception('请求时间与服务器时差过大，请同步时间！');
             if (md5("{$class}#{$appid}#{$config['appkey']}#{$time}#{$nostr}") !== $sign) throw new Exception("该公众号{$appid}请求签名异常！");
-            $config->inc('total')->save();
+            $config->exists()->inc('total')->save();
             return AuthService::__callStatic($class, [$appid]);
         } catch (\Exception $exception) {
             return new \Exception($exception->getMessage(), 404);

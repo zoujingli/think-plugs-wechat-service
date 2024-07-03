@@ -14,6 +14,8 @@
 // | github 代码仓库：https://github.com/zoujingli/think-plugs-wechat-service
 // +----------------------------------------------------------------------
 
+declare (strict_types=1);
+
 namespace plugin\wechat\service\handle;
 
 use plugin\wechat\service\AuthService;
@@ -43,7 +45,7 @@ class PublishHandle extends Service
             $this->app->log->notice($message);
             return $message;
         }
-        $receive = array_change_key_case($wechat->getReceive(), CASE_LOWER);
+        $receive = array_change_key_case($wechat->getReceive());
         switch (strtolower($wechat->getMsgType())) {
             case 'text':
                 if ($receive['content'] === 'TESTCOMPONENT_MSG_TYPE_TEXT') {

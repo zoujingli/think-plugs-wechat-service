@@ -14,6 +14,8 @@
 // | github 代码仓库：https://github.com/zoujingli/think-plugs-wechat-service
 // +----------------------------------------------------------------------
 
+declare (strict_types=1);
+
 namespace plugin\wechat\service\model;
 
 use think\admin\Model;

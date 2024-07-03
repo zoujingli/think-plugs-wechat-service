@@ -14,6 +14,8 @@
 // | github 代码仓库：https://github.com/zoujingli/think-plugs-wechat-service
 // +----------------------------------------------------------------------
 
+declare (strict_types=1);
+
 namespace plugin\wechat\service;
 
 use plugin\wechat\service\model\WechatAuth;
@@ -128,7 +130,7 @@ class AuthService extends Service
      */
     public static function buildAuthData(array $info): array
     {
-        $info = array_change_key_case($info, CASE_LOWER);
+        $info = array_change_key_case($info);
         $info['business_info'] = serialize($info['business_info']);
         $info['verify_type'] = $info['verify_type_info']['id'] != 0 ? '未认证' : '已认证';
         if (isset($info['func_info']) && is_array($info['func_info'])) {
@@ -164,9 +166,7 @@ class AuthService extends Service
      * 获取公众号配置参数
      * @param string $appid
      * @return array
-     * @throws \think\db\exception\DataNotFoundException
-     * @throws \think\db\exception\DbException
-     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\admin\Exception
      */
     public function getWechatConfig(string $appid): array
     {
@@ -199,9 +199,7 @@ class AuthService extends Service
     /**
      * 获取服务平台配置参数
      * @return array
-     * @throws \think\db\exception\DataNotFoundException
-     * @throws \think\db\exception\DbException
-     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\admin\Exception
      */
     public function getServiceConfig(): array
     {
