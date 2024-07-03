@@ -218,6 +218,6 @@ class AuthService extends Service
      */
     private function getCachePath(): string
     {
-        return $this->app->getRootPath() . 'cache';
+        return syspath('safefile/cache');
     }
 }
