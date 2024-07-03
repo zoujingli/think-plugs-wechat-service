@@ -44,11 +44,10 @@
                         let line = [];
                         line.push('{{-d.user_nickname||"<span class=color-desc>未获取到微信昵称</span>"}} <span class="color-desc">( {{d.user_company}} )</span>')
                         line.push('于 <span class="color-blue">{{layui.util.toDateString(d.auth_time*1000, "yyyy年MM月dd日 HH:mm:ss")}}</span> 完成授权')
-
                         if (d.service_verify === '未认证') {
-                            line.push("账号 <b>{{d.user_name||'-'}}</b>, <b>{{d.service_type||'-'}}</b> / <b class='color-red'>未认证</b>")
+                            line.push("<b>{{d.user_name||'-'}}</b> / <b>{{d.service_type||'-'}}</b> / <b class='color-red'>未认证</b>")
                         } else {
-                            line.push("账号 <b>{{d.user_name||'-'}}</b>, <b>{{d.service_type||'-'}}</b> / <b class='color-green'>已认证</b>")
+                            line.push("<b>{{d.user_name||'-'}}</b> / <b>{{d.service_type||'-'}}</b> / <b class='color-green'>已认证</b>")
                         }
                         return laytpl('<div class="flex flex-align-center"><div><img alt="" class="headimg headimg-md headimg-no" referrerpolicy="no-referrer" data-tips-hover data-tips-image src="{{d.qrcode_url}}"></div><div>' + line.join('<br>') + '</div></div>').render(d)
                     }
