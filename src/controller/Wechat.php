@@ -33,18 +33,20 @@ class Wechat extends Controller
      * 公众号授权管理
      * @auth true
      * @menu true
+     * @return void
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\DbException
+     * @throws \think\db\exception\ModelNotFoundException
      */
     public function index()
     {
-        $this->title = '公众号授权管理';
-        $this->type = $this->request->get('type', 'index');
-        WechatAuth::mQuery(null, function (QueryHelper $query) {
-            // 列表搜索筛选
+        $this->type = $this->get['type'] ?? 'index';
+        WechatAuth::mQuery()->layTable(function () {
+            $this->title = '公众号授权管理';
+        }, function (QueryHelper $query) {
             $query->like('authorizer_appid,user_nickname,user_company');
             $query->equal('service_type,service_verify')->timeBetween('auth_time#create_at');
-            // 数据筛选分页
-            $query->where(['status' => intval($this->type === 'index')]);
-            $query->where(['deleted' => 0])->order('auth_time desc')->page();
+            $query->where(['deleted' => 0, 'status' => intval($this->type === 'index')]);
         });
     }
 
